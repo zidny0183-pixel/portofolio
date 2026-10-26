@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
+<head><noscript><style>.hero-name span,.hero-meta,.photo{animation:none}</style></noscript>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Muhammad Zidny | Portofolio Informatika</title>
@@ -100,14 +100,15 @@ footer{padding:2rem 0;border-top:1px solid var(--line);color:var(--muted);font-s
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
 
-/* animasi saat halaman dibuka */
+/* animasi tulisan: mulai setelah loading kucing selesai */
 @keyframes naik{
   from{opacity:0;transform:translateY(48px)}
   to{opacity:1;transform:none}
 }
-.hero-name span{animation:naik .9s cubic-bezier(.2,.7,.2,1) both}
+.hero-name span,.hero-meta,.photo{animation:naik .9s cubic-bezier(.2,.7,.2,1) both;animation-play-state:paused}
 .hero-name span:nth-child(2){animation-delay:.15s}
-.hero-meta,.photo{animation:naik .9s .4s cubic-bezier(.2,.7,.2,1) both}
+.hero-meta,.photo{animation-delay:.4s}
+html.siap .hero-name span,html.siap .hero-meta,html.siap .photo{animation-play-state:running}
 
 /* loading screen */
 #loader{position:fixed;inset:0;z-index:100;background:#fff;display:grid;place-items:center;transition:opacity .5s,visibility .5s;animation:hilang 0s 5s forwards}
@@ -123,7 +124,7 @@ footer{padding:2rem 0;border-top:1px solid var(--line);color:var(--muted);font-s
 @keyframes buka{to{opacity:1}}
 @keyframes tutup{to{opacity:0}}
 @keyframes hilang{to{opacity:0;visibility:hidden}}
-@media (prefers-reduced-motion:reduce){.ekor{animation:none}}
+
 </style>
 </head>
 <body>
@@ -289,15 +290,17 @@ footer{padding:2rem 0;border-top:1px solid var(--line);color:var(--muted);font-s
 </script>
 <script>
 (function(){
+  var root=document.documentElement;
   var l=document.getElementById("loader");
   var sudah=false;
   try{sudah=sessionStorage.getItem("loaderSelesai")}catch(e){}
-  if(sudah){l.remove();return}
+  if(sudah){l.remove();root.classList.add("siap");return}
   var mulai=Date.now();
   function tutup(){
     var sisa=Math.max(0,2800-(Date.now()-mulai));
     setTimeout(function(){
       l.classList.add("selesai");
+      root.classList.add("siap");
       setTimeout(function(){l.remove()},600);
       try{sessionStorage.setItem("loaderSelesai","1")}catch(e){}
     },sisa);
