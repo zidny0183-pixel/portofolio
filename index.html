@@ -92,13 +92,25 @@ footer{padding:2rem 0;border-top:1px solid var(--line);color:var(--muted);font-s
   section{padding:4rem 0}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+
+/* animasi saat halaman dibuka */
+@keyframes naik{
+  from{opacity:0;transform:translateY(48px)}
+  to{opacity:1;transform:none}
+}
+.hero-name span{animation:naik .9s cubic-bezier(.2,.7,.2,1) both}
+.hero-name span:nth-child(2){animation-delay:.15s}
+.hero-meta,.photo{animation:naik .9s .4s cubic-bezier(.2,.7,.2,1) both}
+@media (prefers-reduced-motion:reduce){
+  .hero-name span,.hero-meta,.photo{animation:none}
+}
 </style>
 </head>
 <body>
 
 <header>
   <nav class="wrap" aria-label="Navigasi utama">
-    <a class="logo" href="#top">Nama Lengkap</a>
+    <a class="logo" href="#top">Muhammad Zidny</a>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">What I Can Do</a></li>
@@ -114,7 +126,7 @@ footer{padding:2rem 0;border-top:1px solid var(--line);color:var(--muted);font-s
 <!-- HERO. GANTI nama, NIM, prodi -->
 <section class="hero">
   <div class="wrap">
-    <h1 class="hero-name" aria-label="Nama Lengkap"><span>MUHAMMAD</span><span>ZIDNY</span></h1>
+    <h1 class="hero-name" aria-label="MUHAMMAD ZIDNY"><span>MUHAMMAD</span><span>ZIDNY</span></h1>
     <div class="hero-row">
       <div class="hero-meta">
         <div class="id-line"><span>NIM 2605120416</span><span>S1 Teknik Informatika</span><span>Universitas Negeri Surabaya</span></div>
