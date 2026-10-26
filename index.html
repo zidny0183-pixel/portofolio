@@ -30,7 +30,7 @@ h2{font-size:clamp(2rem,5vw,3.25rem);line-height:1.05;font-weight:800;letter-spa
 header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:4rem}
 .logo{font-weight:800;text-decoration:none;letter-spacing:-.01em}
-nav ul{display:flex;gap:1.5rem;list-style:none;align-items:center}
+nav ul{display:flex;gap:1.5rem;list-style:none;align-items:center;margin-left:auto}
 nav ul a{text-decoration:none;color:var(--muted);font-size:.95rem}
 nav ul a:hover{color:var(--ink)}
 #theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:.3rem .8rem;font:inherit;font-size:.85rem;cursor:pointer}
@@ -86,11 +86,14 @@ dd{font-weight:600;padding-bottom:1.1rem;border-bottom:1px solid var(--line)}
 footer{padding:2rem 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
 
 @media (max-width:760px){
-  html{scroll-padding-top:7rem}
-  nav{flex-wrap:wrap;height:auto;padding:.6rem 0}
-  nav ul{width:100%;flex-wrap:wrap;gap:.3rem 1rem}
-  nav ul a{font-size:.9rem}
-  nav ul li:last-child{margin-left:auto}
+  html{scroll-padding-top:5.5rem}
+  nav{flex-wrap:wrap;height:auto;padding:.7rem 0;row-gap:.5rem}
+  .logo{order:1}
+  #theme{order:2;margin-left:auto}
+  nav ul{order:3;width:100%;margin-left:0;gap:1.1rem;overflow-x:auto;scrollbar-width:none}
+  nav ul::-webkit-scrollbar{display:none}
+  nav ul li{flex:none;white-space:nowrap}
+  nav ul a{font-size:.92rem}
   .hero-row,.about{grid-template-columns:1fr}
   .photo{order:-1;width:140px}
   section{padding:4rem 0}
@@ -163,8 +166,8 @@ footer{padding:2rem 0;border-top:1px solid var(--line);color:var(--muted);font-s
       <li><a href="#skills">What I Can Do</a></li>
       <li><a href="#achievement">Achievement</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><button id="theme" type="button" aria-label="Ganti tema">Tema</button></li>
     </ul>
+    <button id="theme" type="button" aria-label="Ganti tema">Tema</button>
   </nav>
 </header>
 
